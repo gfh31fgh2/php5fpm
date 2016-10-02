@@ -53,7 +53,7 @@ RUN sed -i \
         -e "s~^;daemonize = yes*$~daemonize = no~g" \
         -e "s~^;emergency_restart_threshold.*$~emergency_restart_threshold = 10~g" \
         -e "s~^;emergency_restart_interval.*$~emergency_restart_interval = 1m~g" \
-	-e "s~^error_log = /var/log/php5-fpm.log.*$~error_log = /var/log/php5/php5-fpm.log" \
+	#-e "s~^error_log = /var/log/php5-fpm.log.*$~error_log = /var/log/php5/php5-fpm.log" \
         -e "s~^;process_control_timeout.*$~process_control_timeout = 10s~g" \
             /etc/php5/fpm/php-fpm.conf
 
