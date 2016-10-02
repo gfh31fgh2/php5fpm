@@ -66,9 +66,9 @@ RUN sed -i \
         -e "s/^pm.max_requests\(.*\)/pm.max_requests = 1000/g" \
         -e "s/^;slowlog/slowlog/g" \
         -e "s/^slowlog\(.*\)/slowlog = \/var\/log\/slowlog.log/g" \
-         -e "s/^;request_slowlog_timeout/request_slowlog_timeout/g" \
+        -e "s/^;request_slowlog_timeout/request_slowlog_timeout/g" \
         -e "s/^;pm.status_path/pm.status_path/g" \
-	-e "s/^listen =\(.*\)/listen = /var/run/php5-fpm/php5-fpm.sock/g" \
+	-e "s/^listen =\(.*\)/listen = \/var\/run\/php5-fpm\/php5-fpm.sock/g" \
         -e "s/^;request_terminate_timeout/request_terminate_timeout/g" \
         -e "s/^;catch_workers_output/catch_workers_output/g" \
         -e "s/^;catch_workers_output/catch_workers_output/g" \
