@@ -51,9 +51,10 @@ RUN sed -i \
         -e "s~^;daemonize = yes*$~daemonize = no~g" \
         -e "s~^;emergency_restart_threshold.*$~emergency_restart_threshold = 10~g" \
         -e "s~^;emergency_restart_interval.*$~emergency_restart_interval = 1m~g" \
+	-e "s~^error_log = /var/log/php5-fpm.log/error_log = /var/log/php5/php5-fpm.log" \
         -e "s~^;process_control_timeout.*$~process_control_timeout = 10s~g" \
-        -e "s/listen = 127.0.0.1:9000/listen = \/var\/run\/php-fpm.sock/g" \
             /etc/php5/fpm/php-fpm.conf
+
 RUN sed -i \
         -e "s/^pm.max_children\(.*\)/pm.max_children = 100/g" \
         -e "s/^pm.start_servers\(.*\)/pm.start_servers = 10/g" \
@@ -65,10 +66,12 @@ RUN sed -i \
         -e "s/^slowlog\(.*\)/slowlog = \/var\/log\/slowlog.log/g" \
          -e "s/^;request_slowlog_timeout/request_slowlog_timeout/g" \
         -e "s/^;pm.status_path/pm.status_path/g" \
+	-e "s/^listen = /var/run/php5-fpm.sock/listen = /var/run/php5-fpm/php5-fpm.sock/g" \
         -e "s/^;request_terminate_timeout/request_terminate_timeout/g" \
         -e "s/^;catch_workers_output/catch_workers_output/g" \
         -e "s/^;catch_workers_output/catch_workers_output/g" \
             /etc/php5/fpm/pool.d/www.conf
+
 RUN echo "\n\nopcache.memory_consumption=128" >> /etc/php5/mods-available/opcache.ini && \
     echo "opcache.interned_strings_buffer=8" >> /etc/php5/mods-available/opcache.ini && \
     echo "opcache.max_accelerated_files=4000" >> /etc/php5/mods-available/opcache.ini && \
