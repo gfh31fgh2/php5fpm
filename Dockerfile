@@ -25,6 +25,7 @@ RUN apt-get update && \
     mkdir -p /home/www && mkdir -p /home/www/siteplace && chown -R www-data.www-data /home/www && \
     mkdir /etc/service/php5-fpm && \
     mkdir /var/run/php5-fpm &&\
+    mkdir /var/log/php5 && \
     touch /var/run/php5-fpm/php5-fpm.sock && chown www-data /var/run/php5-fpm/php5-fpm.sock
 
 # Runit php5-fpm  service
